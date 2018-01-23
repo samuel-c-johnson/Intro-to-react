@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
@@ -7,23 +6,25 @@ class App extends Component {
   constructor(props)  {
       super(props)
       this.state = {
-        message: "Hello World!"
+        PLAYER_ONE_SYMBOL: "X",
+        PLAYER_TWO_SYMBOL: "O",
+        currentTurn: "X",
+        board: [
+          "", "", "", "", "", "", "", "", "",
+        ]
       }
   }
 
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2 onClick= {() => this.setState({message: this.state.message + '!'})}>{this.state.message}</h2>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div className="board">
+      {this.state.board.map((cell) => {
+        return <div className="square">{cell}</div>;
+      })}
       </div>
-    );
+    )
   }
+
 }
 
 export default App;
